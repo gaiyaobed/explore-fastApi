@@ -1,6 +1,4 @@
-from fastapi import APIRouter
-
-from fastapi import Depends
+from fastapi import FastAPI, Depends, APIRouter
 
 from sqlalchemy.orm import Session
 
@@ -10,6 +8,7 @@ import schema
 from database import get_db
 
 router = APIRouter()
+
 
 @router.post('/user', status_code=201, response_model=schema.ShowUser, tags=['users'])
 def create_user(request: schema.User, db: Session = Depends(get_db)):
